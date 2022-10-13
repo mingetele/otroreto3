@@ -46,11 +46,11 @@ public class Category implements Serializable {
         this.description = description;
     }
 
-    public List<Tool> getTool() {
+    public List<Tool> getTools() {
         return tools;
     }
 
-    public void setTool(List<Tool> tool) {
-        this.tools = tool;
+    public void setTools(List<Tool> tools) {
+        this.tools = tools;
     }
 }
