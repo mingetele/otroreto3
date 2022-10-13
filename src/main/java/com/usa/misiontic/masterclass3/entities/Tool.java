@@ -22,7 +22,7 @@ public class Tool implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "categoryId")
-    @JsonIgnoreProperties("tool")
+    @JsonIgnoreProperties("tools")
     private Category category;
 
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "tool")
