@@ -1,8 +1,8 @@
 package com.usa.misiontic.masterclass3.service;
 
-import com.usa.misiontic.masterclass3.entities.Category;
-import com.usa.misiontic.masterclass3.entities.Tools;
-import com.usa.misiontic.masterclass3.repository.ToolsRepository;
+import com.usa.misiontic.masterclass3.entities.Reservation;
+import com.usa.misiontic.masterclass3.entities.Tool;
+import com.usa.misiontic.masterclass3.repository.ToolRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,33 +10,35 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ToolsService {
+public class ToolService {
 
     @Autowired
-    private ToolsRepository toolsRepository;
+    private ToolRepository toolRepository;
 
-    public List<Tools> getAll(){
-        return toolsRepository.getAll();
+    public List<Tool> getAll(){
+        return toolRepository.getAll();
     }
-    public Optional<Tools> getTools(int id){
-        return toolsRepository.getTools(id);
+
+    public Optional<Tool> getTool(int id){
+        return toolRepository.getTool(id);
     }
-    public Tools save(Tools p) {
+
+    public Tool save(Tool p) {
         if (p.getId() == null) {
-            return toolsRepository.save(p);
+            return toolRepository.save(p);
         } else {
-            Optional<Tools> e = toolsRepository.getTools(p.getId());
+            Optional<Tool> e = toolRepository.getTool(p.getId());
             if (e.isPresent()) {
                 return p;
             } else {
-                return toolsRepository.save(p);
+                return toolRepository.save(p);
             }
         }
 
     }
-    public Tools update(Tools p) {
+    public Tool update(Tool p) {
         if (p.getId() != null) {
-            Optional<Tools> q = toolsRepository.getTools(p.getId());
+            Optional<Tool> q = toolRepository.getTool(p.getId());
             if (q.isPresent()) {
                 if (p.getName() != null) {
                     q.get().setName((p.getName()));
@@ -50,10 +52,8 @@ public class ToolsService {
                 if (p.getDescription() != null) {
                     q.get().setDescription((p.getDescription()));
                 }
-                if (p.getCategory() != null) {
-                    q.get().setCategory((p.getCategory()));
-                }
-                toolsRepository.save(q.get());
+
+                toolRepository.save(q.get());
                 return q.get();
             } else {
                 return p;
@@ -65,9 +65,9 @@ public class ToolsService {
     }
     public boolean delete(int id){
         boolean flag=false;
-        Optional<Tools>p= toolsRepository.getTools(id);
+        Optional<Tool>p= toolRepository.getTool(id);
         if(p.isPresent()){
-            toolsRepository.delete(p.get());
+            toolRepository.delete(p.get());
             flag=true;
         }
         return flag;

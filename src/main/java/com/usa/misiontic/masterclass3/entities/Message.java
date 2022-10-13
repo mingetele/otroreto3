@@ -16,9 +16,15 @@ public class Message implements Serializable {
     private Integer idMessage;
     private  String messageText;
 
+    @ManyToOne
+    @JoinColumn(name = "toolId")
+    @JsonIgnoreProperties({"messages", "reservations"})
+    private Tool tool;
 
-
-
+    @ManyToOne
+    @JoinColumn(name = "clientId")
+    @JsonIgnoreProperties({"messages", "reservations"})
+    private Client client;
 
     public Integer getIdMessage() {
         return idMessage;
@@ -36,5 +42,19 @@ public class Message implements Serializable {
         this.messageText = messageText;
     }
 
+    public Tool getTool() {
+        return tool;
+    }
 
+    public void setTool(Tool tool) {
+        this.tool = tool;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
 }

@@ -23,7 +23,7 @@ public class MessageController {
         return messageService.getAll();
     }
 
-    @GetMapping("delete")
+    @GetMapping("/{id}")
     public Optional<Message> getMessage(@PathVariable("id") int id) {return messageService.getMessage(id);}
 
     @PostMapping("/save")
@@ -35,6 +35,6 @@ public class MessageController {
     @PutMapping("/update")
     public Message update(@RequestBody Message p){return messageService.update(p);}
 
-    @DeleteMapping("/delete")
+    @DeleteMapping("/{id}")
     public boolean delete(@PathVariable("id") int id){return messageService.delete(id);}
 }

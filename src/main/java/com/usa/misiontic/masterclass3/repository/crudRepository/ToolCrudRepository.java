@@ -4,5 +4,5 @@ import com.usa.misiontic.masterclass3.entities.Reservation;
 import com.usa.misiontic.masterclass3.entities.Tool;
 import org.springframework.data.repository.CrudRepository;
 
-public interface ReservationCrudRepository extends CrudRepository<Reservation, Integer> {
+public interface ToolCrudRepository extends CrudRepository<Tool, Integer> {
 }

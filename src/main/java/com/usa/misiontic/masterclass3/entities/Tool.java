@@ -1,14 +1,14 @@
 package com.usa.misiontic.masterclass3.entities;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
-
 @Entity
-@Table(name = "tools")
-public class Tools implements Serializable {
+@Table(name = "tool")
+public class Tool implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,9 +22,16 @@ public class Tools implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "categoryId")
-    @JsonIgnoreProperties("tools")
+    @JsonIgnoreProperties("tool")
     private Category category;
 
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "tool")
+    @JsonIgnoreProperties({"tool","client"})
+    private List<Message> messages;
+
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "tool")
+    @JsonIgnoreProperties({"tool","client"})
+    private List<Reservation> reservations;
 
 
     public Integer getId() {
@@ -74,4 +81,22 @@ public class Tools implements Serializable {
     public void setCategory(Category category) {
         this.category = category;
     }
+
+    public List<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
+    }
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
+    }
 }
+
+

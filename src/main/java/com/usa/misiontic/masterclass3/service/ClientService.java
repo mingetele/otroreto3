@@ -18,7 +18,7 @@ public class ClientService {
         return clientRepository.getAll();
     }
 
-    public Optional<Client> getProduct(int id){
+    public Optional<Client> getClient(int id){
         return clientRepository.getClient(id);
     }
 
@@ -47,6 +47,9 @@ public class ClientService {
                 }
                 if (p.getPassword() != null) {
                     q.get().setPassword(p.getPassword());
+                }
+                if (p.getEmail() != null) {
+                    q.get().setEmail(p.getEmail());
                 }
                 clientRepository.save(q.get());
                 return q.get();
