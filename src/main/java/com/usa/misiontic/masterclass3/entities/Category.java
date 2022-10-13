@@ -20,7 +20,7 @@ public class Category implements Serializable {
 
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "category")
     @JsonIgnoreProperties("category")
-    private List<Tool> tool;
+    private List<Tool> tools;
 
     public Integer getId() {
         return id;
@@ -47,10 +47,10 @@ public class Category implements Serializable {
     }
 
     public List<Tool> getTool() {
-        return tool;
+        return tools;
     }
 
     public void setTool(List<Tool> tool) {
-        this.tool = tool;
+        this.tools = tool;
     }
 }
