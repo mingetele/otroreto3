@@ -1,6 +1,7 @@
 package com.usa.misiontic.masterclass3.controller;
 
 
+import com.usa.misiontic.masterclass3.entities.Category;
 import com.usa.misiontic.masterclass3.entities.Reservation;
 import com.usa.misiontic.masterclass3.entities.Tool;
 import com.usa.misiontic.masterclass3.service.ReservationService;
@@ -29,4 +30,12 @@ public class ToolController {
     public Tool save(@RequestBody Tool p){
         return toolService.save(p);
     }
+
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Tool update(@RequestBody Tool p){return toolService.update(p);}
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean delete(@PathVariable("id") int id){return toolService.delete(id);}
 }

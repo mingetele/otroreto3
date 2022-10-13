@@ -40,12 +40,13 @@ public class ToolService {
         if (p.getId() != null) {
             Optional<Tool> q = toolRepository.getTool(p.getId());
             if (q.isPresent()) {
-                if (p.getName() != null) {
-                    q.get().setName((p.getName()));
-                }
                 if (p.getBrand() != null) {
                     q.get().setBrand((p.getBrand()));
                 }
+                if (p.getName() != null) {
+                    q.get().setName((p.getName()));
+                }
+
                 if (p.getYear() != null) {
                     q.get().setYear((p.getYear()));
                 }
