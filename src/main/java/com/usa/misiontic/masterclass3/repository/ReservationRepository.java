@@ -6,6 +6,7 @@ import com.usa.misiontic.masterclass3.repository.crudRepository.ReservationCrudR
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,4 +31,9 @@ public class ReservationRepository {
     public void delete(Reservation p){
         reservationCrudRepository.delete(p);
     }
+
+    /*public List<Reservation> getReservationPeriod(Date a, Date b){
+        return reservationCrudRepository.findAllByStartDateAfterAndStartDateBefore(a,b);
+    }*/
+
 }

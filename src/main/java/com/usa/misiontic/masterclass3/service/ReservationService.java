@@ -1,11 +1,15 @@
 package com.usa.misiontic.masterclass3.service;
 
-import com.usa.misiontic.masterclass3.entities.Message;
-import com.usa.misiontic.masterclass3.entities.Reservation;
+import com.usa.misiontic.masterclass3.entities.*;
+import com.usa.misiontic.masterclass3.repository.ClientRepository;
 import com.usa.misiontic.masterclass3.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,6 +18,8 @@ public class ReservationService {
 
     @Autowired
     private ReservationRepository reservationRepository;
+    @Autowired
+    private ClientRepository clientRepository;
 
     public List<Reservation> getAll(){
         return reservationRepository.getAll();
@@ -65,4 +71,75 @@ public class ReservationService {
         }
         return flag;
     }
+
+    public Status getStatus() {
+        Status status = new Status();
+        List<Reservation> reservations = reservationRepository.getAll();
+        int contF = 0;
+        int contC = 0;
+        for (Reservation res : reservations) {
+            if (res.getStatus().equals("completed")) {
+                contF = contF + 1;
+
+            } else if (res.getStatus().equals("cancelled")) {
+                contC = contC + 1;
+            }
+
+        }
+        status.setCompleted(contF);
+        status.setCancelled(contC);
+        return status;
+    }
+
+    public List<ReportClient> getReportClient() {
+        List<ReportClient> repoclient=new ArrayList<ReportClient>();
+        List<Client> clients=clientRepository.getAll();
+        int total=0;
+        for(Client cli:clients){
+            for(Reservation res:cli.getReservations()){
+                total=total+1;
+            }
+            ReportClient reportclient= new ReportClient();
+            reportclient.setTotal(total);
+            reportclient.setClient(cli);
+            repoclient.add(reportclient);
+            total=0;
+        }
+        return repoclient;
+    }
+
+    public List<Reservation> getReportDates(Date date1, Date date2){
+        List<Reservation> reservations= reservationRepository.getAll();
+        List<Reservation> reservationsDate = new ArrayList<Reservation>();
+        for(Reservation res:reservations){
+            if(date1.compareTo(res.getStartDate()) * res.getStartDate().compareTo(date2) >= 0){
+                reservationsDate.add(res);
+            }
+        }
+        return reservationsDate;
+    }
+
+
+
+
+
+
+
+   /* public List<Reservation> getReservationsPeriod(String dateA, String dateB){
+        SimpleDateFormat parser=new SimpleDateFormat("yyyy-MM-dd");
+        Date a= new Date();
+        Date b= new Date();
+        try{
+            a = parser.parse(dateA);
+            b = parser.parse(dateB);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        if(a.before(b)){
+            return reservationRepository.getReservationPeriod(a,b);
+        }else{
+            return new ArrayList<>();
+        }
+    }*/
+
 }
