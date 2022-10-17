@@ -11,7 +11,7 @@
         $.ajax({
             type:"GET",
             dataType:"JSON",
-            url:"http://132.145.167.124/api/Category/all",
+            url:"http://158.101.102.8:8080/api/Category/all",
             success:function(datos){
                 console.log(datos.length);
                 let datosCategorias ="";
@@ -40,7 +40,7 @@
             console.log(id);
             $.ajax({
                 type:"DELETE",
-                url:"http://132.145.167.124/api/Category/"+id,
+                url:"http://158.101.102.8:8080/api/Category/"+id,
                 success:function(datos){
                     window.location.reload();
                 }
@@ -52,7 +52,7 @@
             $.ajax({
                 type:"GET",
                 dataType:"JSON",
-                url:"http://132.145.167.124/api/Category/"+id,
+                url:"http://158.101.102.8:8080/api/Category/"+id,
                 success:function(datos){
                     console.log(datos);
                     document.querySelector("#idEd").value = datos.id;
@@ -79,7 +79,7 @@
             };
             let parametroEnvio = JSON.stringify(parametros);
             $.ajax({
-                url:"http://132.145.167.124/api/Category/save",
+                url:"http://158.101.102.8:8080/api/Category/save",
                 type:"POST",
                 dataType: "JSON",
                 contentType:"application/JSON",
@@ -110,7 +110,7 @@
             };
             let parametroEnvio = JSON.stringify(parametros);
             $.ajax({
-                url:"http://132.145.167.124/api/Category/update",
+                url:"http://158.101.102.8:8080/api/Category/update",
                 type:"PUT",
                 dataType: "JSON",
                 contentType:"application/JSON",
