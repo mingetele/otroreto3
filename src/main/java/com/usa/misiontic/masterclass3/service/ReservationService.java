@@ -119,27 +119,4 @@ public class ReservationService {
         return reservationsDate;
     }
 
-
-
-
-
-
-
-   /* public List<Reservation> getReservationsPeriod(String dateA, String dateB){
-        SimpleDateFormat parser=new SimpleDateFormat("yyyy-MM-dd");
-        Date a= new Date();
-        Date b= new Date();
-        try{
-            a = parser.parse(dateA);
-            b = parser.parse(dateB);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        if(a.before(b)){
-            return reservationRepository.getReservationPeriod(a,b);
-        }else{
-            return new ArrayList<>();
-        }
-    }*/
-
 }

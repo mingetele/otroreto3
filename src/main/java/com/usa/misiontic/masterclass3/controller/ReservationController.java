@@ -16,9 +16,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @RestController
-/*@CrossOrigin(origins = "*", allowedHeaders = "*")*/
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/api/Reservation")
-@CrossOrigin(origins = "*", methods = {RequestMethod.GET,RequestMethod.POST,RequestMethod.DELETE,RequestMethod.PUT})
+/*@CrossOrigin(origins = "*", methods = {RequestMethod.GET,RequestMethod.POST,RequestMethod.DELETE,RequestMethod.PUT})*/
 
 public class ReservationController {
 

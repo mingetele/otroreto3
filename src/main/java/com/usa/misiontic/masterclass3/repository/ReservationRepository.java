@@ -32,7 +32,7 @@ public class ReservationRepository {
         reservationCrudRepository.delete(p);
     }
 
-    /*public List<Reservation> getReservationPeriod(Date a, Date b){
+   /* public List<Reservation> getReservationPeriod(Date a, Date b){
         return reservationCrudRepository.findAllByStartDateAfterAndStartDateBefore(a,b);
     }*/
 

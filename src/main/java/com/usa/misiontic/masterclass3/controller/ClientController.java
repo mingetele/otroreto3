@@ -11,9 +11,9 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-/*@CrossOrigin(origins = "*", allowedHeaders = "*")*/
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/api/Client")
-@CrossOrigin(origins = "*", methods = {RequestMethod.GET,RequestMethod.POST,RequestMethod.DELETE,RequestMethod.PUT})
+/*@CrossOrigin(origins = "*", methods = {RequestMethod.GET,RequestMethod.POST,RequestMethod.DELETE,RequestMethod.PUT})*/
 
 public class ClientController {
 
