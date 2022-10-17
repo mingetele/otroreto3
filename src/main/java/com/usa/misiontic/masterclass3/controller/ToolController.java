@@ -30,9 +30,7 @@ public class ToolController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Tool> getById(@PathVariable("id") int id){
-        return toolService.getTool(id);
-    }
+    public Optional<Tool> getById(@PathVariable("id") int id){ return toolService.getTool(id);}
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
     public Tool save(@RequestBody Tool p){
