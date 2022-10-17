@@ -75,13 +75,14 @@ function editar(id){
             let datos = {
                 name:$("#nombre").val(),
                 brand:$("#marca").val(),
-                year:$("#año").val(),
+                year:parseInt($("#año").val()),
                 description: $("#descripcion").val(),
                 
 
             };
 
             var parametros = {
+                "id":datos.id,
                 "name":datos.name,
                 "brand":datos.brand,
                 "year":datos.year,
