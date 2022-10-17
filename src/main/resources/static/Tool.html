@@ -15,7 +15,7 @@
             success:function(datos){
                 console.log(datos.length);
                 let datosHerramientas ="";
-                for(i=0; i < datos.length;i++){
+                for(i=0; i<datos.length;i++){
                     datosHerramientas = "<tr>";
                     datosHerramientas+= "<td>"+datos[i].id+"</td>";
                     datosHerramientas+= "<td>"+datos[i].name+"</td>";
@@ -23,7 +23,7 @@
                     datosHerramientas+= "<td>"+datos[i].year+"</td>";
                     datosHerramientas+= "<td>"+datos[i].description+"</td>";
                     
-                    datosHerramientas+= "<td><a href =  '#' class = 'btn btn-success' data-bs-toggle='modal' data-bs-tartget='#modalEditar' onclick='editar("+datos[i].id+");'>Editar</a></td>";
+                    datosHerramientas+= "<td><a href =  '#' class = 'btn btn-success' data-bs-toggle='modal' data-bs-target='#modalEditar' onclick='editar("+datos[i].id+");'>Editar</a></td>";
                     datosHerramientas+= "<td><a href = '#' class = 'btn btn-danger' onclick='eliminar("+datos[i].id+");'>Eliminar</a></td>";
                     datosHerramientas+="</tr>";
                     $("#datos").append(datosHerramientas);
@@ -153,7 +153,7 @@ function editar(id){
                     <th>Nombre</th>
                     <th>Marca</th>
                     <th>Año</th>
-                    <th>Descrpcion</th>
+                    <th>Descripcion</th>
                     <th colspan="2">Acciones</th>
                     
     
