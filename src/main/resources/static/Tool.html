@@ -22,14 +22,13 @@
                     datosHerramientas+= "<td>"+datos[i].brand+"</td>";
                     datosHerramientas+= "<td>"+datos[i].year+"</td>";
                     datosHerramientas+= "<td>"+datos[i].description+"</td>";
-                    datosHerramientas+= "<td><a href = 'editar.html?'id="+datos[i].id+" class = 'btn btn-success'>Editar</a></td>";
-                    datosHerramientas+= "<td><a href = 'eliminar.html?id="+datos[i].id+"'class = 'btn btn-danger'>Eliminar</a></td>";
+                    
+                    datosHerramientas+= "<td><a href =  '#' class = 'btn btn-success' data-bs-toggle='modal' data-bs-tartget='#modalEditar' onclick='editar("+datos[i].id+");'>Editar</a></td>";
+                    datosHerramientas+= "<td><a href = '#' class = 'btn btn-danger' onclick='eliminar("+datos[i].id+");'>Eliminar</a></td>";
                     datosHerramientas+="</tr>";
                     $("#datos").append(datosHerramientas);
-
                 }
-                console.log(datosHerramientas);
-                
+                console.log(datosHerramientas);              
 
 
             },
@@ -39,12 +38,114 @@
                 console.log(xhr);
             }
         })
+
+        function eliminar(id){
+            console.log(id);
+            $.ajax({
+                type:"DELETE",
+                url:"http://158.101.102.8:8080/api/Tool/"+id,
+                success:function(datos){
+                    window.location.reload();
+                }
+            })
+        }
+
+//Recoger los datos con el get by id
+function editar(id){
+            console.log(id);
+            $.ajax({
+                type:"GET",
+                dataType:"JSON",
+                url:"http://158.101.102.8:8080/api/Tool/"+id,
+                success:function(datos){
+                    console.log(datos);
+                    document.querySelector("#idEd").value = datos.id;
+                    document.querySelector("#nombreEd").value = datos.name;
+                    document.querySelector("#marcaEd").value = datos.brand;
+                    document.querySelector("#añoEd").value = datos.year;
+                    document.querySelector("#descripcionEd").value = datos.description;
+                    
+                }
+            })
+        }
+
+         //Parámetros para agregar un elemento nuevo
+         function guardar(){
+            console.log("Guardar");
+            let datos = {
+                name:$("#nombre").val(),
+                brand:$("#marca").val(),
+                year:$("#año").val(),
+                description: $("#descripcion").val(),
+                
+
+            };
+
+            var parametros = {
+                "name":datos.name,
+                "brand":datos.brand,
+                "año":datos.year,
+                "description":datos.description,
+                
+            };
+            let parametroEnvio = JSON.stringify(parametros);
+            $.ajax({
+                url:"http://158.101.102.8:8080/api/Tool/save",
+                type:"POST",
+                dataType: "JSON",
+                contentType:"application/JSON",
+                data:parametroEnvio,
+                success: function(response){
+                    
+                    window.location.reload();
+                }
+            })
+
+    }
+
+    function guardarEd(){
+            console.log("Guardar");
+            let datos = {
+                id:parseInt($("#idEd").val()),
+                nombre:$("#nombreEd").val(),
+                marca:$("#marcaEd").val(),
+                año:$("#añoEd").val(),
+                descripcion: $("#descripcionEd").val(),
+                
+
+            };
+
+            var parametros = {
+                "id":datos.id,
+                "name":datos.nombre,
+                "brand":datos.marca,
+                "year":datos.año,
+                "description":datos.descripcion,
+                
+            };
+            let parametroEnvio = JSON.stringify(parametros);
+            $.ajax({
+                url:"http://158.101.102.8:8080/api/Tool/update",
+                type:"PUT",
+                dataType: "JSON",
+                contentType:"application/JSON",
+                data:parametroEnvio,
+                success: function(response){
+                    
+                    window.location.reload();
+                }
+            })
+            console.log(parametroEnvio);
+        }
+
+
+
     </script>
 </head>
 <body>
     <div class="container">
         <h1 class="mb-5">Herramientas</h1>
-        <a href="agregarHerramienta.html" class="btn btn-info">Agregar Herramienta</a>
+        <a href="agregarHerramienta.html" class="btn btn-info" data-bs-toggle='modal' data-bs-target='#modalAgregar'>Agregar Herramienta</a>
         <table class="table mt-5" id="herramientas">
             <thead>
                 <tr>
@@ -65,7 +166,80 @@
             
 
         </table>
-      </div>
-    
+
+        <!-- Modal Agregar -->
+        <div class="modal fade" id="modalAgregar" tabindex="-1" aria-labelledby="modalAgregarLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="modalAgregarLabel">Agregar Herramienta</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" placeholder="Nombre">
+                        </div>
+                        <div class="mb-3">
+                            <label for="marca" class="form-label">Marca</label>
+                            <input type="text" class="form-control" id="marca" placeholder="Marca">
+                        </div>
+                        <div class="mb-3">
+                            <label for="año" class="form-label">Año</label>
+                            <input type="text" class="form-control" id="año" placeholder="Año">
+                        </div>
+                        <div class="mb-3">
+                            <label for="descripcion" class="form-label">Descripcion</label>
+                            <input type="text" class="form-control" id="descripcion" placeholder="Descripcion">
+                        </div>
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary" onclick="guardar();">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Editar -->
+        <div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="modalEditarLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="modalEditarLabel">Editar Herramienta</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" id="idEd">
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombreEd" placeholder="Nombre">
+                        </div>
+                        <div class="mb-3">
+                            <label for="marca" class="form-label">Marca</label>
+                            <input type="text" class="form-control" id="marcaEd" placeholder="Marca">
+                        </div>
+                        <div class="mb-3">
+                            <label for="año" class="form-label">Año</label>
+                            <input type="text" class="form-control" id="añoEd" placeholder="Año">
+                        </div>
+                        <div class="mb-3">
+                            <label for="descripcion" class="form-label">Descripción</label>
+                            <input type="text" class="form-control" id="descripcionEd" placeholder="Descripción">
+                        </div>
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary" onclick="guardarEd();">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>

@@ -12,6 +12,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -29,6 +30,11 @@ public class ReservationController {
     @GetMapping("/all")
     public List<Reservation> getAll(){
         return reservationService.getAll();
+    }
+
+    @GetMapping("/{id}")
+    public Optional<Reservation> getById(@PathVariable("id") int id){
+        return reservationService.getReservation(id);
     }
 
       @PostMapping("/save")
