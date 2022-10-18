@@ -59,8 +59,8 @@ function editar(idReservation){
                 success:function(datos){
                     console.log(datos);
                     document.querySelector("#idReservationEd").value = datos.idReservation;
-                    document.querySelector("#startDateEd").value = datos.startDate;
-                    document.querySelector("#devolutionDateEd").value = datos.devolutionDate;
+                    document.querySelector("#inicioEd").value = datos.startDate;
+                    document.querySelector("#devolucionEd").value = datos.devolutionDate;
                     document.querySelector("#statusEd").value = datos.status;
                     
                 }
