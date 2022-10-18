@@ -22,7 +22,7 @@
                     datosHerramientas+= "<td>"+datos[i].brand+"</td>";
                     datosHerramientas+= "<td>"+datos[i].year+"</td>";
                     datosHerramientas+= "<td>"+datos[i].description+"</td>";
-                    datosHerramientas+="<td>"+datos[i].category.name+"</td>";
+                    datosHerramientas+="<td>"+datos[i].category.nombre+"</td>";
                     
                     datosHerramientas+= "<td><a href =  '#' class = 'btn btn-success' data-bs-toggle='modal' data-bs-target='#modalEditar' onclick='editar("+datos[i].id+");'>Editar</a></td>";
                     datosHerramientas+= "<td><a href = '#' class = 'btn btn-danger' onclick='eliminar("+datos[i].id+");'>Eliminar</a></td>";
@@ -118,7 +118,7 @@ function editar(id){
                 marca:$("#marcaEd").val(),
                 año:parseInt($("#añoEd").val()),
                 descripcion: $("#descripcionEd").val(),
-                categoria: parseInt($("#categoriaEd").val()),
+                categoria: parseInt($("#categoriaEd").val())
                 
 
             };
@@ -129,6 +129,7 @@ function editar(id){
                 "brand":datos.marca,
                 "year":datos.año,
                 "description":datos.descripcion,
+                "categoria":{"id":datos.category}
                 
             };
             let parametroEnvio = JSON.stringify(parametros);
