@@ -71,7 +71,7 @@ function editar(idReservation){
          function guardar(){
             console.log("Guardar");
             let datos = {
-                startDate:Date.parse($("#yyyy/mm/dd").val()),
+                startDate:Date.parse($("#inicio").val()),
                 devolutionDate:Date.parse($("#devolucion").val()),
                 status:$("#status").val(),
                 
