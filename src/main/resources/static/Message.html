@@ -62,7 +62,7 @@ function editar(id){
                 url:"http://158.101.102.8:8080/api/Message/"+id,
                 success:function(datos){
                     console.log(datos);
-                    document.querySelector("#idEd").value = datos.idMessage;
+                    document.querySelector("#idMessageEd").value = datos.idMessage;
                     document.querySelector("#textoMensaje").value = datos.messageText;
                    
                     
@@ -84,6 +84,7 @@ function editar(id){
             };
 
             var parametros = {
+                "idMessage":datos.idMessage,
                 "messageText":datos.messageText,
                 "client":{"idClient":datos.client},
                 "tool":{"id":datos.tool},
@@ -107,14 +108,14 @@ function editar(id){
     function guardarEd(){
             console.log("Guardar");
             let datos = {
-                idMessage:parseInt($("#idEd").val()),
+                idMessage:parseInt($("#idMessageEd").val()),
                 messageText:$("#textoMensajeEd").val()
 
             };
 
             var parametros = {
                 "idMessage":datos.idMessage,
-                "messageText":datos.messageText,
+                "messageText":datos.textoMensaje,
                 
             };
             let parametroEnvio = JSON.stringify(parametros);
@@ -203,7 +204,7 @@ function editar(id){
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                     </div>
                     <div class="modal-body">
-                        <input type="hidden" id="idEd">
+                        <input type="hidden" id="idMessageEd">
                         <div class="mb-3">
                             <label for="textoMensaje" class="form-label">Texto del mensaje</label>
                             <input type="text" class="form-control" id="textoMensajeEd" placeholder="Texto del mensaje">
