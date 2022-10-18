@@ -61,7 +61,7 @@ function editar(idReservation){
                     document.querySelector("#idReservationEd").value = datos.idReservation;
                     document.querySelector("#inicioEd").value = datos.startDate;
                     document.querySelector("#devolucionEd").value = datos.devolutionDate;
-                    document.querySelector("#statusEd").value = datos.status;
+                    document.querySelector("#estadoEd").value = datos.status;
                     
                 }
             })
@@ -73,7 +73,7 @@ function editar(idReservation){
             let datos = {
                 startDate:Date.parse($("#inicio").val()),
                 devolutionDate:Date.parse($("#devolucion").val()),
-                status:$("#status").val(),
+                status:$("#estado").val(),
                 
             };
 
@@ -105,7 +105,7 @@ function editar(idReservation){
                 idReservation:parseInt($("#idReservationEd").val()),
                 inicio:Date.parse($("#inicioEd").val()),
                 devolucion:Date.parse($("#devolucionEd").val()),
-                status:$("#statusEd").val(),                
+                estado:$("#estadoEd").val(),                
                 
             };
 
@@ -113,7 +113,7 @@ function editar(idReservation){
                 "idReservation":datos.idReservation,
                 "startDate":datos.inicio,
                 "devolutionDate":datos.devolucion,
-                "status":datos.status,
+                "status":datos.estado,
                 
             };
             let parametroEnvio = JSON.stringify(parametros);
@@ -145,7 +145,7 @@ function editar(idReservation){
                     <th>ID</th>
                     <th>Fecha de Inicio</th>
                     <th>Fecha de Devolucion</th>
-                    <th>Status</th>
+                    <th>Estado</th>
                     <th colspan="2">Acciones</th>
                     
     
@@ -178,8 +178,8 @@ function editar(idReservation){
                             <input type="text" class="form-control" id="devolucion" placeholder="Devolucion">
                         </div>
                         <div class="mb-3">
-                            <label for="status" class="form-label">Status</label>
-                            <input type="text" class="form-control" id="status" placeholder="Status">
+                            <label for="estado" class="form-label">Estado</label>
+                            <input type="text" class="form-control" id="estado" placeholder="Estado">
                         </div>
                                                 
                     </div>
@@ -210,8 +210,8 @@ function editar(idReservation){
                             <input type="text" class="form-control" id="devolucionEd" placeholder="Devolucion">
                         </div>
                         <div class="mb-3">
-                            <label for="status" class="form-label">Status</label>
-                            <input type="text" class="form-control" id="statusEd" placeholder="Status">
+                            <label for="estado" class="form-label">Estado</label>
+                            <input type="text" class="form-control" id="estadoEd" placeholder="Estado">
                         </div>
                                                 
                     </div>
