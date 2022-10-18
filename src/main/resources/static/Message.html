@@ -46,7 +46,7 @@
             console.log(idMessage);
             $.ajax({
                 type:"DELETE",
-                url:"http://158.101.102.8:8080/api/Message/"+id,
+                url:"http://158.101.102.8:8080/api/Message/"+idMessage,
                 success:function(datos){
                     window.location.reload();
                 }
@@ -78,7 +78,7 @@ function editar(idMessage){
             let datos = {
                 messsageText:$("#textoMensaje").val(),
                 client:parseInt($("#cliente").val()),
-                tool:parseInt($("#herramienta").val())
+                tool:parseInt($("#herramienta").val()),
                             
 
             };
