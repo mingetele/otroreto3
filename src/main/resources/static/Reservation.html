@@ -103,16 +103,16 @@ function editar(idReservation){
             console.log("Guardar");
             let datos = {
                 idReservation:parseInt($("#idReservationEd").val()),
-                inicio:Date.parse($("#startDateEd").val()),
-                devolucion:Date.parse($("#devolutionDateEd").val()),
+                inicio:Date.parse($("#inicioEd").val()),
+                devolucion:Date.parse($("#devolucionEd").val()),
                 status:$("#statusEd").val(),                
                 
             };
 
             var parametros = {
                 "idReservation":datos.idReservation,
-                "startDate":datos.startDate,
-                "devolutionDate":datos.devolutionDate,
+                "startDate":datos.inicio,
+                "devolutionDate":datos.devolucion,
                 "status":datos.status,
                 
             };
@@ -202,12 +202,12 @@ function editar(idReservation){
                     <div class="modal-body">
                         <input type="hidden" id="idReservationEd">
                         <div class="mb-3">
-                            <label for="startDate" class="form-label">Inicio</label>
-                            <input type="text" class="form-control" id="startDateEd" placeholder="Inicio">
+                            <label for="inicio" class="form-label">Inicio</label>
+                            <input type="text" class="form-control" id="inicioEd" placeholder="Inicio">
                         </div>
                         <div class="mb-3">
-                            <label for="devolutionDate" class="form-label">Devolucion</label>
-                            <input type="text" class="form-control" id="devolutionDateEd" placeholder="Devolucion">
+                            <label for="devolucion" class="form-label">Devolucion</label>
+                            <input type="text" class="form-control" id="devolucionEd" placeholder="Devolucion">
                         </div>
                         <div class="mb-3">
                             <label for="statusEd" class="form-label">Status</label>
