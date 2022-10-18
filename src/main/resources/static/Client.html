@@ -60,7 +60,7 @@ function editar(idClient){
                 url:"http://158.101.102.8:8080/api/Client/"+idClient,
                 success:function(datos){
                     console.log(datos);
-                    document.querySelector("#idEd").value = datos.idClient;
+                    document.querySelector("#idClientEd").value = datos.idClient;
                     document.querySelector("#nombreEd").value = datos.name;
                     document.querySelector("#edadEd").value = datos.age;
                     document.querySelector("#emailEd").value = datos.email;
