@@ -82,7 +82,7 @@ function editar(id){
                 brand:$("#marca").val(),
                 year:parseInt($("#año").val()),
                 description: $("#descripcion").val(),
-                category: parseInt($("#categoria").val())
+                category:parseInt($("#categoria").val())
                 
 
             };
@@ -93,7 +93,7 @@ function editar(id){
                 "brand":datos.brand,
                 "year":datos.year,
                 "description":datos.description,
-                "categoria":{"id":datos.category}
+                "category":{"id":datos.category}
                 
             };
             let parametroEnvio = JSON.stringify(parametros);
