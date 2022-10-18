@@ -22,7 +22,7 @@
                     datosHerramientas+= "<td>"+datos[i].brand+"</td>";
                     datosHerramientas+= "<td>"+datos[i].year+"</td>";
                     datosHerramientas+= "<td>"+datos[i].description+"</td>";
-                    datosHerramientas+="<td>"+datos[i].category+"</td>";
+                    datosHerramientas+="<td>"+datos[i].category.name+"</td>";
                     
                     datosHerramientas+= "<td><a href =  '#' class = 'btn btn-success' data-bs-toggle='modal' data-bs-target='#modalEditar' onclick='editar("+datos[i].id+");'>Editar</a></td>";
                     datosHerramientas+= "<td><a href = '#' class = 'btn btn-danger' onclick='eliminar("+datos[i].id+");'>Eliminar</a></td>";
@@ -30,10 +30,7 @@
                     $("#datos").append(datosHerramientas);
                 }
                 console.log(datosHerramientas); 
-                console.log(datos[0]); 
                 
-                
-
 
 
             },
@@ -85,7 +82,7 @@ function editar(id){
                 brand:$("#marca").val(),
                 year:parseInt($("#año").val()),
                 description: $("#descripcion").val(),
-                category: parseInt($("#categoria").val()),
+                category: parseInt($("#categoria").val())
                 
 
             };
@@ -96,7 +93,7 @@ function editar(id){
                 "brand":datos.brand,
                 "year":datos.year,
                 "description":datos.description,
-                "categoria":{"id":datos.category},
+                "categoria":{"id":datos.category}
                 
             };
             let parametroEnvio = JSON.stringify(parametros);
