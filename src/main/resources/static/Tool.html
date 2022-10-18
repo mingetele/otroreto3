@@ -22,7 +22,7 @@
                     datosHerramientas+= "<td>"+datos[i].brand+"</td>";
                     datosHerramientas+= "<td>"+datos[i].year+"</td>";
                     datosHerramientas+= "<td>"+datos[i].description+"</td>";
-                    datosHerramientas+="<td>"+datos[i].category.name+"</td>";
+                    datosHerramientas+="<td>"+datos[i].category.id+"</td>";
                     
                     datosHerramientas+= "<td><a href =  '#' class = 'btn btn-success' data-bs-toggle='modal' data-bs-target='#modalEditar' onclick='editar("+datos[i].id+");'>Editar</a></td>";
                     datosHerramientas+= "<td><a href = '#' class = 'btn btn-danger' onclick='eliminar("+datos[i].id+");'>Eliminar</a></td>";
