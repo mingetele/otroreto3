@@ -54,12 +54,12 @@
         }
 
 //Recoger los datos con el get by id
-function editar(id){
-            console.log(id);
+function editar(idMessage){
+            console.log(idMessage);
             $.ajax({
                 type:"GET",
                 dataType:"JSON",
-                url:"http://158.101.102.8:8080/api/Message/"+id,
+                url:"http://158.101.102.8:8080/api/Message/"+idMessage,
                 success:function(datos){
                     console.log(datos);
                     document.querySelector("#idMessageEd").value = datos.idMessage;
