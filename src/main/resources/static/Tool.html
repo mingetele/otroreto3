@@ -22,6 +22,7 @@
                     datosHerramientas+= "<td>"+datos[i].brand+"</td>";
                     datosHerramientas+= "<td>"+datos[i].year+"</td>";
                     datosHerramientas+= "<td>"+datos[i].description+"</td>";
+                    datosHerramientas+="<td>"+datos[i].category.name+"</td>";
                     
                     datosHerramientas+= "<td><a href =  '#' class = 'btn btn-success' data-bs-toggle='modal' data-bs-target='#modalEditar' onclick='editar("+datos[i].id+");'>Editar</a></td>";
                     datosHerramientas+= "<td><a href = '#' class = 'btn btn-danger' onclick='eliminar("+datos[i].id+");'>Eliminar</a></td>";
@@ -65,6 +66,8 @@ function editar(id){
                     document.querySelector("#añoEd").value = datos.year;
                     document.querySelector("#descripcionEd").value = datos.description;
                     
+
+                    
                 }
             })
         }
@@ -77,6 +80,7 @@ function editar(id){
                 brand:$("#marca").val(),
                 year:parseInt($("#año").val()),
                 description: $("#descripcion").val(),
+                category: parseInt($("#categoria").val())
                 
 
             };
@@ -87,6 +91,7 @@ function editar(id){
                 "brand":datos.brand,
                 "year":datos.year,
                 "description":datos.description,
+                "categoria":{"id":datos.category}
                 
             };
             let parametroEnvio = JSON.stringify(parametros);
@@ -155,6 +160,7 @@ function editar(id){
                     <th>Marca</th>
                     <th>Año</th>
                     <th>Descripcion</th>
+                    <th >Categoria</th>
                     <th colspan="2">Acciones</th>
                     
     
@@ -193,6 +199,10 @@ function editar(id){
                         <div class="mb-3">
                             <label for="descripcion" class="form-label">Descripcion</label>
                             <input type="text" class="form-control" id="descripcion" placeholder="Descripcion">
+                        </div>
+                        <div class="mb-3">
+                            <label for="categoria" class="form-label">Categoria</label>
+                            <input type="text" class="form-control" id="categoria" placeholder="Categoria">
                         </div>
                         
                     </div>
