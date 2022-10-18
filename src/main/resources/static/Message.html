@@ -42,8 +42,8 @@
             }
         })
 
-        function eliminar(id){
-            console.log(id);
+        function eliminar(idMessage){
+            console.log(idMessage);
             $.ajax({
                 type:"DELETE",
                 url:"http://158.101.102.8:8080/api/Message/"+id,
@@ -115,7 +115,7 @@ function editar(idMessage){
 
             var parametros = {
                 "idMessage":datos.idMessage,
-                "messageText":datos.textoMensaje,
+                "messageText":datos.messageText,
                 
             };
             let parametroEnvio = JSON.stringify(parametros);
@@ -178,11 +178,11 @@ function editar(idMessage){
                         </div>
                         <div class="mb-3">
                             <label for="cliente" class="form-label">Cliente</label>
-                            <input type="text" class="form-control" id="cliente" placeholder="Id cliente">
+                            <input type="text" class="form-control" id="cliente" placeholder="Cliente">
                         </div>
                         <div class="mb-3">
                             <label for="herramienta" class="form-label">Herramienta</label>
-                            <input type="text" class="form-control" id="herramienta" placeholder="Id herramienta">
+                            <input type="text" class="form-control" id="herramienta" placeholder="Herramienta">
                         </div>
                         
                                                 
