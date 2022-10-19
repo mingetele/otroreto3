@@ -28,7 +28,7 @@
                     datosMensajes+= "<td><a href = '#' class = 'btn btn-danger' onclick='eliminar("+datos[i].idMessage+");'>Eliminar</a></td>";
                     datosMensajes+="</tr>";
                     $("#datos").append(datosMensajes);
-                    console.log(datos[0].idMessage)
+                    
                 }
                 console.log(datosMensajes); 
 
@@ -64,10 +64,6 @@ function editar(idMessage){
                     console.log(datos);
                     document.querySelector("#idMessageEd").value = datos.idMessage;
                     document.querySelector("#textoMensajeEd").value = datos.messageText;
-                   
-                    
-
-                    
                 }
             })
         }
@@ -109,7 +105,7 @@ function editar(idMessage){
             console.log("Guardar");
             let datos = {
                 idMessage:parseInt($("#idMessageEd").val()),
-                messageText:$("#textoMensajeEd").val()
+                textoMensaje:$("#textoMensajeEd").val()
 
             };
 
